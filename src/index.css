@@ -72,6 +72,10 @@
   .rotate-hover {
     animation: rotateOnHover 0.3s ease-out;
   }
+
+  .dropdown-backdrop {
+    @apply bg-white/95 dark:bg-black/95; /* Increased opacity for dropdown menus */
+  }
 }
 
 @keyframes fadeIn {
