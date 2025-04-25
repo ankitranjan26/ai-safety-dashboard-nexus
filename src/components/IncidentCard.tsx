@@ -27,10 +27,10 @@ export function IncidentCard({ incident }: IncidentCardProps) {
   };
 
   return (
-    <Card className="w-full transition-all duration-300 hover:translate-z-4 hover:shadow-xl">
+    <Card className="w-full transition-all duration-300 hover:translate-z-4 hover:shadow-xl float">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-lg font-bold group">
-          <span className="inline-block transition-transform duration-300 group-hover:scale-105">
+          <span className="inline-block transition-transform duration-300 group-hover:scale-105 pulse-subtle">
             {incident.title}
           </span>
         </CardTitle>
@@ -47,7 +47,7 @@ export function IncidentCard({ incident }: IncidentCardProps) {
         <Button 
           variant="ghost" 
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-sm group relative overflow-hidden transition-all duration-300 hover:bg-accent"
+          className="text-sm group relative overflow-hidden transition-all duration-300 hover:bg-accent rotate-hover"
         >
           <span className="inline-flex items-center gap-2">
             <RotateCw className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
