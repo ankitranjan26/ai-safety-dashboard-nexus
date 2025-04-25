@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { rotate } from 'lucide-react';
+import { RotateCw } from 'lucide-react';
 
 interface Incident {
   id: number;
@@ -50,7 +50,7 @@ export function IncidentCard({ incident }: IncidentCardProps) {
           className="text-sm group relative overflow-hidden transition-all duration-300 hover:bg-accent"
         >
           <span className="inline-flex items-center gap-2">
-            <rotate className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+            <RotateCw className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
             {isExpanded ? "Hide Details" : "View Details"}
           </span>
         </Button>
