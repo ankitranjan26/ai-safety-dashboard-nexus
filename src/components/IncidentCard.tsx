@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { rotate } from 'lucide-react';
 
 interface Incident {
   id: number;
@@ -26,23 +27,32 @@ export function IncidentCard({ incident }: IncidentCardProps) {
   };
 
   return (
-    <Card className="w-full transition-all duration-300 hover:transform hover:translate-z-4 hover:shadow-xl">
+    <Card className="w-full transition-all duration-300 hover:translate-z-4 hover:shadow-xl">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-lg font-bold">{incident.title}</CardTitle>
-        <Badge className={`${severityColors[incident.severity]} text-white`}>
+        <CardTitle className="text-lg font-bold group">
+          <span className="inline-block transition-transform duration-300 group-hover:scale-105">
+            {incident.title}
+          </span>
+        </CardTitle>
+        <Badge 
+          className={`${severityColors[incident.severity]} text-white transform transition-all duration-300 hover:scale-110`}
+        >
           {incident.severity}
         </Badge>
       </CardHeader>
       <CardContent>
-        <div className="text-sm text-muted-foreground mb-2">
+        <div className="text-sm text-muted-foreground mb-2 transition-opacity duration-300 hover:opacity-80">
           {new Date(incident.reported_at).toLocaleDateString()}
         </div>
         <Button 
           variant="ghost" 
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-sm"
+          className="text-sm group relative overflow-hidden transition-all duration-300 hover:bg-accent"
         >
-          {isExpanded ? "Hide Details" : "View Details"}
+          <span className="inline-flex items-center gap-2">
+            <rotate className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+            {isExpanded ? "Hide Details" : "View Details"}
+          </span>
         </Button>
         {isExpanded && (
           <div className="mt-2 text-sm text-muted-foreground animate-fade-in">

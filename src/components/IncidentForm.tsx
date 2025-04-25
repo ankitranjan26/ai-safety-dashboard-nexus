@@ -41,34 +41,36 @@ export function IncidentForm({ onSubmit }: IncidentFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="w-full max-w-2xl mx-auto transform transition-all duration-300 hover:translate-z-4 hover:shadow-lg">
       <CardHeader>
-        <CardTitle>Report New Incident</CardTitle>
+        <CardTitle className="transform transition-all duration-300 hover:scale-105">Report New Incident</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
+          <div className="space-y-2 transition-all duration-300 hover:translate-z-2">
             <Label htmlFor="title">Title</Label>
             <Input
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
+              className="transition-all duration-300 hover:border-primary focus:translate-z-2"
             />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 transition-all duration-300 hover:translate-z-2">
             <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
+              className="transition-all duration-300 hover:border-primary focus:translate-z-2"
             />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 transition-all duration-300 hover:translate-z-2">
             <Label>Severity</Label>
             <Select value={severity} onValueChange={setSeverity}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full transition-all duration-300 hover:border-primary">
                 <SelectValue placeholder="Select severity" />
               </SelectTrigger>
               <SelectContent>
@@ -78,7 +80,12 @@ export function IncidentForm({ onSubmit }: IncidentFormProps) {
               </SelectContent>
             </Select>
           </div>
-          <Button type="submit" className="w-full">Submit Report</Button>
+          <Button 
+            type="submit" 
+            className="w-full transform transition-all duration-300 hover:translate-z-4 hover:scale-[1.02] active:scale-95"
+          >
+            Submit Report
+          </Button>
         </form>
       </CardContent>
     </Card>

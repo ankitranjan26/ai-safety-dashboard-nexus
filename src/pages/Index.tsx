@@ -11,8 +11,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Initial mock data
-const initialIncidents = [
+// Define the Incident type to fix TypeScript errors
+type Incident = {
+  id: number;
+  title: string;
+  description: string;
+  severity: "Low" | "Medium" | "High";
+  reported_at: string;
+};
+
+// Initial mock data with proper typing
+const initialIncidents: Incident[] = [
   {
     id: 1,
     title: "Biased Recommendation Algorithm",
@@ -34,10 +43,10 @@ const initialIncidents = [
     severity: "Low",
     reported_at: "2025-03-20T09:15:00Z"
   }
-] as const;
+];
 
 const Index = () => {
-  const [incidents, setIncidents] = useState(initialIncidents);
+  const [incidents, setIncidents] = useState<Incident[]>(initialIncidents);
   const [severityFilter, setSeverityFilter] = useState('All');
   const [sortOrder, setSortOrder] = useState('newest');
 
@@ -51,22 +60,22 @@ const Index = () => {
       return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
     });
 
-  const handleNewIncident = (newIncident: any) => {
-    setIncidents(prev => [...prev, newIncident]);
+  const handleNewIncident = (newIncident: Incident) => {
+    setIncidents(prevIncidents => [...prevIncidents, newIncident]);
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 animate-fade-in">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">AI Safety Incident Dashboard</h1>
+          <h1 className="text-3xl font-bold hover:scale-105 transition-transform duration-200">AI Safety Incident Dashboard</h1>
           <ThemeToggle />
         </div>
         
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="w-full md:w-1/2">
+        <div className="flex flex-col md:flex-row gap-4 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="w-full md:w-1/2 transition-all duration-300 hover:translate-z-4">
             <Select value={severityFilter} onValueChange={setSeverityFilter}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full transition-colors hover:bg-accent">
                 <SelectValue placeholder="Filter by severity" />
               </SelectTrigger>
               <SelectContent>
@@ -78,9 +87,9 @@ const Index = () => {
             </Select>
           </div>
           
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 transition-all duration-300 hover:translate-z-4">
             <Select value={sortOrder} onValueChange={setSortOrder}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full transition-colors hover:bg-accent">
                 <SelectValue placeholder="Sort by date" />
               </SelectTrigger>
               <SelectContent>
@@ -91,13 +100,17 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="grid gap-6 mb-8">
-          {filteredAndSortedIncidents.map(incident => (
-            <IncidentCard key={incident.id} incident={incident} />
+        <div className="grid gap-6 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          {filteredAndSortedIncidents.map((incident, index) => (
+            <div key={incident.id} className="animate-fade-in" style={{ animationDelay: `${0.2 * index}s` }}>
+              <IncidentCard incident={incident} />
+            </div>
           ))}
         </div>
 
-        <IncidentForm onSubmit={handleNewIncident} />
+        <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <IncidentForm onSubmit={handleNewIncident} />
+        </div>
       </div>
     </div>
   );
