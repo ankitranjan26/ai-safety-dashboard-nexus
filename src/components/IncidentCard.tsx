@@ -21,21 +21,21 @@ export function IncidentCard({ incident }: IncidentCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const severityColors = {
-    Low: "bg-green-500",
-    Medium: "bg-yellow-500",
-    High: "bg-red-500"
+    Low: "bg-green-600/80 text-green-100",
+    Medium: "bg-yellow-600/80 text-yellow-100",
+    High: "bg-red-600/80 text-red-100"
   };
 
   return (
-    <Card className="w-full transition-all duration-300 hover:translate-z-4 hover:shadow-xl float">
+    <Card className="w-full transition-all duration-300 hover:translate-z-4 hover:shadow-2xl float bg-card/70 backdrop-blur-sm border-border/30">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-lg font-bold group">
-          <span className="inline-block transition-transform duration-300 group-hover:scale-105 pulse-subtle">
+          <span className="inline-block transition-transform duration-300 group-hover:scale-105 pulse-subtle text-foreground/90">
             {incident.title}
           </span>
         </CardTitle>
         <Badge 
-          className={`${severityColors[incident.severity]} text-white transform transition-all duration-300 hover:scale-110`}
+          className={`${severityColors[incident.severity]} transform transition-all duration-300 hover:scale-110`}
         >
           {incident.severity}
         </Badge>
@@ -45,17 +45,17 @@ export function IncidentCard({ incident }: IncidentCardProps) {
           {new Date(incident.reported_at).toLocaleDateString()}
         </div>
         <Button 
-          variant="ghost" 
+          variant="outline" 
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-sm group relative overflow-hidden transition-all duration-300 hover:bg-accent rotate-hover"
+          className="text-sm group relative overflow-hidden transition-all duration-300 hover:bg-accent/30 rotate-hover border-accent/30"
         >
           <span className="inline-flex items-center gap-2">
-            <RotateCw className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+            <RotateCw className={`transition-transform duration-300 text-foreground/70 ${isExpanded ? 'rotate-180' : ''}`} />
             {isExpanded ? "Hide Details" : "View Details"}
           </span>
         </Button>
         {isExpanded && (
-          <div className="mt-2 text-sm text-muted-foreground animate-fade-in">
+          <div className="mt-2 text-sm text-muted-foreground animate-fade-in bg-accent/10 p-3 rounded-md">
             {incident.description}
           </div>
         )}
