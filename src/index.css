@@ -4,22 +4,22 @@
 
 @layer base {
   :root {
-    --background: 240 10% 10%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 12%;
-    --card-foreground: 0 0% 95%;
-    --primary: 269 83.2% 65.3%;
-    --primary-foreground: 255 100% 98%;
-    --secondary: 269 50% 25%;
-    --secondary-foreground: 269 83.2% 85%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 269 50% 35%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 40.6%;
-    --border: 240 3.7% 20.9%;
-    --input: 240 3.7% 20.9%;
-    --ring: 269 83.2% 55.3%;
+    --background: 210 40% 98%; /* Soft, light blue-gray */
+    --foreground: 220 15% 20%; /* Dark slate gray for text */
+    --card: 210 40% 96%; /* Slightly lighter than background */
+    --card-foreground: 220 15% 20%;
+    --primary: 269 83.2% 65.3%; /* Soft purple */
+    --primary-foreground: 255 100% 98%; /* Very light text on primary */
+    --secondary: 250 50% 85%; /* Soft lavender */
+    --secondary-foreground: 269 83.2% 25%; /* Dark purple for secondary text */
+    --muted: 210 40% 90%; /* Very light blue-gray */
+    --muted-foreground: 220 15% 45%; /* Muted text color */
+    --accent: 269 50% 90%; /* Very soft, light purple */
+    --accent-foreground: 269 83.2% 35%; /* Accent text color */
+    --destructive: 0 62.8% 50%; /* Soft red */
+    --border: 220 15% 85%; /* Light border color */
+    --input: 220 15% 90%; /* Light input background */
+    --ring: 269 83.2% 65%; /* Soft purple ring/focus color */
     --radius: 0.5rem;
   }
 
